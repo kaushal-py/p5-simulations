@@ -11,10 +11,10 @@ function draw(){
 
     background(255);
 
-    if (increasing && elevator <= 60){
+    if (increasing && elevator <= 90){
         elevator+= 0.5;
     }
-    else if (elevator > 60){
+    else if (elevator > 90){
         increasing = false;
     }
     if (!increasing && elevator >= 0){
