@@ -1,15 +1,33 @@
+var elevator = 0;
+var increasing = true;
+
 // p5 functions
 function setup(){
     createCanvas(700, 700);
-    drawTree(350, 680, -90, 9);
-    // line(350, 680, )
+    frameRate(30);
 }
 
 function draw(){
+
+    background(255);
+
+    if (increasing && elevator <= 60){
+        elevator+= 0.5;
+    }
+    else if (elevator > 60){
+        increasing = false;
+    }
+    if (!increasing && elevator >= 0){
+        elevator-= 0.5;
+    }
+    else if (elevator < 0){
+        increasing = true;
+    }
+    drawTree(350, 600, -90, 9, elevator);
 }
 
 //user-functions
-function drawTree(x1, y1, angle, depth){
+function drawTree(x1, y1, angle, depth, width_angle){
 
     if (depth > 0){
 
@@ -20,7 +38,7 @@ function drawTree(x1, y1, angle, depth){
 
         line(x1, y1, x2, y2);
 
-        drawTree(x2, y2, angle + 20, depth - 1);
-        drawTree(x2, y2, angle - 20, depth - 1);
+        drawTree(x2, y2, angle + width_angle, depth - 1, width_angle);
+        drawTree(x2, y2, angle - width_angle, depth - 1, width_angle);
     }
 }
