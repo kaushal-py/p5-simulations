@@ -46,7 +46,7 @@ function draw(){
     }
     stroke(0);
 
-    if(tracer.length > 2500){
+    if(tracer.length > 10000){
         tracer.shift();
     }
 
@@ -108,8 +108,8 @@ function moveMouse1(){
 function moveMouse2(){
     var angle = Math.atan2((my-cy), (mx-cx));
     // console.log(angle*180/Math.PI);
-    mx = mx + Math.cos(angle);
-    my = my + Math.sin(angle);
+    mx = mx + Math.cos(angle)*2;
+    my = my + Math.sin(angle)*2;
     updateCat();
 }
 
@@ -122,13 +122,13 @@ function moveCat(l){
 function updateCat(){
 
     old_dist = Math.pow(cx-mx,2) + Math.pow(cy-my, 2);
-    moveCat(4);
+    moveCat(8);
     pos_dist = Math.pow(cx-mx,2) + Math.pow(cy-my, 2);
-    moveCat(-8);
+    moveCat(-16);
     neg_dist = Math.pow(cx-mx,2) + Math.pow(cy-my, 2);
 
     if (pos_dist - old_dist < neg_dist - old_dist){
-        moveCat(8);
+        moveCat(16);
     }
 }
 
