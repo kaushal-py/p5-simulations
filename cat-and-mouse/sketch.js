@@ -20,7 +20,6 @@ function draw(){
     fill(0,0);
     circle(center_x, center_y, 2*radius);
 
-    // console.log(cx + " " + cy);
     drawMouse(mx, my);
     drawCat(Math.round(cx), Math.round(cy));
     moveMouse();
