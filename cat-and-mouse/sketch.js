@@ -15,11 +15,11 @@ var b3;
 
 var mode = 2;
 
-// var tracer = [[mx, my]];
+var tracer = [[mx, my]];
 
 function setup(){
     createCanvas(600, 500);
-    frameRate(1);
+    frameRate(60);
 
     b1 = createButton('Keyboard movement');
     b1.position(500, 30);
@@ -40,13 +40,15 @@ function draw(){
     fill(0,0);
     circle(center_x, center_y, 2*radius);
 
+    stroke(200);
+    for(var i=0; i<tracer.length; i++){
+        ellipse(tracer[i][0], tracer[i][1], 1);
+    }
+    stroke(0);
 
-    // for(var i=0; i<tracer.length; i++){
-    //     point(tracer[i][0], tracer[i][1]);
-    // }
-    // if(tracer.length)
-
-    // console.log(tracer);
+    if(tracer.length > 2500){
+        tracer.shift();
+    }
 
     drawCat(Math.round(cx), Math.round(cy));
     drawMouse(mx, my);
